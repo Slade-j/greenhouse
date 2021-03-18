@@ -1,15 +1,18 @@
-import dayImage from './images/greenhouse-day.jpg';
-import nightImage from './images/greenhouse-night.jpg';
+import dayImage from "./images/greenhouse-day.jpg";
+import nightImage from "./images/greenhouse-night.jpg";
+import { useTheme } from "../../context/ThemeContext";
 
-import './Greenhouse.css';
+import "./Greenhouse.css";
 
-import LightSwitch from './LightSwitch';
-import ClimateStats from './ClimateStats';
+import LightSwitch from "./LightSwitch";
+import ClimateStats from "./ClimateStats";
 
 function Greenhouse() {
+  const { themeName } = useTheme();
+  const srcImage = themeName === "day" ? dayImage : nightImage;
   return (
     <section>
-      <img className='greenhouse-img' src={dayImage} alt='greenhouse' />
+      <img className="greenhouse-img" src={srcImage} alt="greenhouse" />
       <LightSwitch />
       <ClimateStats />
     </section>
